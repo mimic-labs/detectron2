@@ -74,6 +74,9 @@ class VideoVisualizer:
         if num_instances == 0:
             return frame_visualizer.output
 
+        if predictions.has("pred_keypoints"):
+            print("keypoints detected")
+
         boxes = predictions.pred_boxes.tensor.numpy() if predictions.has("pred_boxes") else None
         scores = predictions.scores if predictions.has("scores") else None
         classes = predictions.pred_classes.numpy() if predictions.has("pred_classes") else None
