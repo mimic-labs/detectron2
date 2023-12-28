@@ -703,6 +703,9 @@ class Visualizer:
             color = assigned_colors[i]
             if boxes is not None:
                 self.draw_box(boxes[i], edge_color=color)
+                # draw centroid of box
+                x0, y0, x1, y1 = boxes[i]
+                self.draw_circle(((x0 + x1) / 2, (y0 + y1) / 2), radius=1.5, color=color)
 
             if masks is not None:
                 for segment in masks[i].polygons:
